@@ -1,0 +1,16 @@
+---
+language: node_js
+
+node_js:
+  - node
+  - lts/*
+
+dist: bionic
+
+install:
+  - npm install
+
+script:
+  - npm run lint:dry
+  - npm test
+  - npm run build
