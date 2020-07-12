@@ -26,9 +26,11 @@ describe('ApolloServerOperationDuration', () => {
       `,
       mocks: true,
       mockEntireSchema: true,
-      plugins: [ApolloServerOperationDuration({
-        callback,
-      })],
+      plugins: [
+        ApolloServerOperationDuration({
+          callback,
+        }),
+      ],
     });
 
     const { url } = await server.listen();

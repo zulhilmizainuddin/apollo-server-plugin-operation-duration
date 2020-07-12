@@ -43,11 +43,13 @@ const server = new ApolloServer({
   `,
   mocks: true,
   mockEntireSchema: true,
-  plugins: [ApolloServerOperationDuration({
-    callback: ({ operationName, operationDuration, parsingDuration, validationDuration, executionDuration }) => {
-      operationDurationHistogram.labels(operationName).observe(operationDuration);
-    },
-  })],
+  plugins: [
+    ApolloServerOperationDuration({
+      callback: ({ operationName, operationDuration, parsingDuration, validationDuration, executionDuration }) => {
+        operationDurationHistogram.labels(operationName).observe(operationDuration);
+      },
+    })
+  ],
 });
 
 server.listen().then(({ url }) => {
