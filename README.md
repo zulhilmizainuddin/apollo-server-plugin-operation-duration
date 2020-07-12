@@ -1,5 +1,7 @@
 # apollo-server-plugin-operation-duration [![Build Status](https://travis-ci.org/zulhilmizainuddin/apollo-server-plugin-operation-duration.svg?branch=master)](https://travis-ci.org/zulhilmizainuddin/apollo-server-plugin-operation-duration)
 
+[![NPM](https://nodei.co/npm/apollo-server-plugin-operation-duration.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/apollo-server-plugin-operation-duration/)
+
 This Apollo server plugin exposes an interface for instrumentation of query operation duration.
 
 The following information are exposed for instrumentation:
