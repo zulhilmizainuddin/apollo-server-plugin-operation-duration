@@ -23,7 +23,7 @@ export interface Options {
 
 export default (options: Options = Object.create(null)): ApolloServerPlugin => ({
   requestDidStart(): GraphQLRequestListener {
-    const operationStartTimestamp = process.hrtime.bigint();
+    const operationStartTimestamp: bigint = process.hrtime.bigint();
 
     let operationName: string | null;
 
@@ -37,7 +37,7 @@ export default (options: Options = Object.create(null)): ApolloServerPlugin => (
 
     return {
       parsingDidStart(): GraphQLRequestListenerParsingDidEnd {
-        const startTimestamp = process.hrtime.bigint();
+        const startTimestamp: bigint = process.hrtime.bigint();
 
         return (err) => {
           if (!err) {
@@ -46,7 +46,7 @@ export default (options: Options = Object.create(null)): ApolloServerPlugin => (
         };
       },
       validationDidStart(): GraphQLRequestListenerValidationDidEnd {
-        const startTimestamp = process.hrtime.bigint();
+        const startTimestamp: bigint = process.hrtime.bigint();
 
         return (errs) => {
           if (!errs) {
@@ -58,7 +58,7 @@ export default (options: Options = Object.create(null)): ApolloServerPlugin => (
         operationName = requestContext.operationName;
       },
       executionDidStart(): GraphQLRequestListenerExecutionDidEnd {
-        const startTimestamp = process.hrtime.bigint();
+        const startTimestamp: bigint = process.hrtime.bigint();
 
         return (err) => {
           if (!err) {
