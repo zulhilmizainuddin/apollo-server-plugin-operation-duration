@@ -66,7 +66,7 @@ describe('ApolloServerOperationDuration', () => {
 
   it('should retrieve durations without operation name', async () => {
     await init(({ operationName, operationDuration, parsingDuration, validationDuration, executionDuration }) => {
-      expect(operationName).to.be.undefined;
+      expect(operationName).to.be.null;
       expect(operationDuration).to.be.above(0);
       expect(parsingDuration).to.be.above(0);
       expect(validationDuration).to.be.above(0);

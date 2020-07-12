@@ -10,7 +10,7 @@ import {
 } from 'apollo-server-plugin-base';
 
 export interface Result {
-  operationName?: string;
+  operationName: string | null;
   operationDuration: number;
   parsingDuration: number;
   validationDuration: number;
@@ -25,7 +25,7 @@ export default (options: Options = Object.create(null)): ApolloServerPlugin => (
   requestDidStart(): GraphQLRequestListener {
     const operationStartTimestamp = process.hrtime.bigint();
 
-    let operationName: string | undefined;
+    let operationName: string | null;
 
     let parsingDuration: number;
     let validationDuration: number;
@@ -55,9 +55,7 @@ export default (options: Options = Object.create(null)): ApolloServerPlugin => (
         };
       },
       didResolveOperation(requestContext: GraphQLRequestContextDidResolveOperation<BaseContext>): ValueOrPromise<void> {
-        operationName = requestContext.operationName || undefined;
-
-        return;
+        operationName = requestContext.operationName;
       },
       executionDidStart(): GraphQLRequestListenerExecutionDidEnd {
         const startTimestamp = process.hrtime.bigint();
@@ -77,7 +75,7 @@ export default (options: Options = Object.create(null)): ApolloServerPlugin => (
         if (!didEncounterErrors) {
           operationDuration = Number(process.hrtime.bigint() - operationStartTimestamp) / 1e6;
 
-          callback({ operationName, operationDuration, parsingDuration, validationDuration, executionDuration });
+          return callback({ operationName, operationDuration, parsingDuration, validationDuration, executionDuration });
         }
       }
     };
