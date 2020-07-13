@@ -1,6 +1,6 @@
 {
   "name": "apollo-server-plugin-operation-duration",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Apollo server plugin for query operation duration instrumentation",
   "main": "dist/index.js",
   "scripts": {
