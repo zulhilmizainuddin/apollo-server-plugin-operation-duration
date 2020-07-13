@@ -1,7 +1,7 @@
 {
   "name": "apollo-server-plugin-operation-duration",
   "version": "0.1.0",
-  "description": "",
+  "description": "Apollo server plugin for query operation duration instrumentation",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
